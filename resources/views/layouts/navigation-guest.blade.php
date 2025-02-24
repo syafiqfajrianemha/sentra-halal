@@ -27,6 +27,45 @@
                         </x-slot>
                     </x-nav-link-parent>
                 </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link-parent :href="'#'" :active="request()->routeIs('institution.*')">
+                        <x-slot name="name">Lembaga</x-slot>
+                        <x-slot name="children">
+                            <a href="{{ route('institution.halalcompanion') }}" class="{{ request()->routeIs('institution.halalcompanion') ? 'text-blue-500 font-bold' : '' }}">Pelatihan Pendamping Halal</a>
+                            <a href="{{ route('institution.slaughterer') }}" class="{{ request()->routeIs('institution.slaughterer') ? 'text-blue-500 font-bold' : '' }}">Juru Sembelih Halal</a>
+                        </x-slot>
+                    </x-nav-link-parent>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('activity.index')" :active="request()->routeIs('activity.index')">
+                        {{ __('Kegiatan') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('gallery.index')" :active="request()->routeIs('gallery.index')">
+                        {{ __('Galeri') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link-parent :href="'#'" :active="request()->routeIs('service.*')">
+                        <x-slot name="name">Layanan</x-slot>
+                        <x-slot name="children">
+                            <a href="{{ route('service.halalcertification') }}" class="{{ request()->routeIs('service.halalcertification') ? 'text-blue-500 font-bold' : '' }}">Pengajuan Sertifikasi Halal</a>
+                            <a href="{{ route('service.halalcompanion') }}" class="{{ request()->routeIs('service.halalcompanion') ? 'text-blue-500 font-bold' : '' }}">Pelatihan Pendamping Halal</a>
+                            <a href="{{ route('service.slaughterer') }}" class="{{ request()->routeIs('service.slaughterer') ? 'text-blue-500 font-bold' : '' }}">Juru Sembelih Halal</a>
+                        </x-slot>
+                    </x-nav-link-parent>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('contact.index')" :active="request()->routeIs('contact.index')">
+                        {{ __('Kontak') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
