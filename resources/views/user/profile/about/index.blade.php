@@ -2,8 +2,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 flex items-center justify-between">
-                    <div class="w-1/2">
+                <div class="p-6 flex flex-col md:flex-row items-center justify-between">
+                    <div class="w-full md:w-1/2 mb-6 md:mb-0">
                         <h2 class="text-lg font-bold mb-4">Tentang Sentra Halal Universitas Muhammadiyah Purwokerto</h2>
                         <p class="text-sm text-gray-700 mb-4 text-justify">
                             Gencar dan bebasnya perdagangan internasional menjadikan Indonesia mudah dimasuki produk impor yang rentan mengandung bahan tidak halal. Oktober 2014 telah disahkan UU Republik Indonesia No 33 tahun 2014 tentang Jaminan Produk Halal (UU-JPH). Produk makanan, minuman, kosmetik, dan obat-obatan yang masuk, beredar, dan diperdagangkan di wilayah Indonesia wajib bersertifikat halal. Sertifikat halal meliputi pemeriksaan bahan baku, bahan tambahan, teknik pemrosesan, pengepakan, logistik, penyimpanan, kemasan dan penyajian.
@@ -17,9 +17,9 @@
                         </ul>
                     </div>
 
-                    <div class="w-1/2 flex justify-end">
-                        <div class="w-100 h-100 bg-white flex items-center justify-center">
-                            <img src="{{ asset('images/image-about.png') }}" alt="Logo">
+                    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+                        <div class="w-100 h-100 md:w-100 md:h-100 bg-white flex items-center justify-center">
+                            <img src="{{ asset('images/image-about.png') }}" alt="Logo" class="max-w-full h-auto">
                         </div>
                     </div>
                 </div>
