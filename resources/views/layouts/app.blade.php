@@ -14,27 +14,45 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+        <style>
+            @media (prefers-color-scheme: dark) {
+                .dark\:bg-gray-900\/80 {
+                    background-color: white !important;
+                }
+            }
+        </style>
+
         @stack('style')
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+        @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+        <main>
+            {{ $slot }}
+        </main>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const sidebarToggle = document.querySelector("[data-drawer-toggle]");
+                const sidebar = document.getElementById("logo-sidebar");
 
+                if (sidebarToggle && sidebar) {
+                    sidebarToggle.addEventListener("click", function () {
+                        sidebar.classList.toggle("-translate-x-full");
+                    });
+                }
+
+                const profileButton = document.querySelector("[data-dropdown-toggle='dropdown-user']");
+                const profileMenu = document.getElementById("dropdown-user");
+
+                if (profileButton && profileMenu) {
+                    profileButton.addEventListener("click", function () {
+                        profileMenu.classList.toggle("hidden");
+                    });
+                }
+            });
+        </script>
         @stack('script')
     </body>
 </html>
