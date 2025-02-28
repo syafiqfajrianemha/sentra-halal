@@ -9,6 +9,7 @@ use App\Http\Controllers\InstitutionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileMenuController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\RoleCheck;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,8 @@ Route::middleware(['auth', 'verified', RoleCheck::class.':admin'])->group(functi
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/manajemen-akun', [UserController::class, 'index'])->name('user');
 });
 
 Route::middleware(['auth', RoleCheck::class.':admin,user'])->group(function () {
