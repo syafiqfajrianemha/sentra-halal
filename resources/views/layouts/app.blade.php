@@ -17,7 +17,7 @@
         <style>
             @media (prefers-color-scheme: dark) {
                 .dark\:bg-gray-900\/80 {
-                    background-color: white !important;
+                    background-color: transparent !important;
                 }
             }
         </style>
