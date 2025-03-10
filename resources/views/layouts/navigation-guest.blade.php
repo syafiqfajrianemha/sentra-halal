@@ -54,7 +54,7 @@
                     <x-nav-link-parent :href="'#'" :active="request()->routeIs('service.*')">
                         <x-slot name="name">Layanan</x-slot>
                         <x-slot name="children">
-                            <a href="{{ route('service.halalcertification') }}" class="{{ request()->routeIs('service.halalcertification') ? 'text-blue-500 font-bold' : '' }}">Pengajuan Sertifikasi Halal</a>
+                            <a href="{{ route('service.halalcertification') }}" class="{{ request()->routeIs('service.halalcertification') ? 'text-blue-500 font-bold' : '' }}">Pengajuan Sertifikat Halal</a>
                             <a href="{{ route('service.halalcompanion') }}" class="{{ request()->routeIs('service.halalcompanion') ? 'text-blue-500 font-bold' : '' }}">Pelatihan Pendamping Halal</a>
                             <a href="{{ route('service.slaughterer') }}" class="{{ request()->routeIs('service.slaughterer') ? 'text-blue-500 font-bold' : '' }}">Juru Sembelih Halal</a>
                         </x-slot>

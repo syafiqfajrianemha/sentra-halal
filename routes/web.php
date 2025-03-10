@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\BahanController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InstitutionController;
+use App\Http\Controllers\PenanggungJawabPenyeliaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfileMenuController;
 use App\Http\Controllers\ServiceController;
@@ -28,10 +30,6 @@ Route::get('/kegiatan', [ActivityController::class, 'index'])->name('activity.in
 
 Route::get('/galeri', [GalleryController::class, 'index'])->name('gallery.index');
 
-Route::get('/layanan/pengajuan-sertifikasi-halal', [ServiceController::class, 'halalCertification'])->name('service.halalcertification');
-Route::get('/layanan/pelatihan-pendamping-halal', [ServiceController::class, 'halalCompanion'])->name('service.halalcompanion');
-Route::get('/layanan/juru-sembelih-halal', [ServiceController::class, 'slaughterer'])->name('service.slaughterer');
-
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact.index');
 
 Route::middleware(['auth', 'verified', RoleCheck::class.':admin'])->group(function () {
@@ -47,7 +45,31 @@ Route::middleware(['auth', 'verified', RoleCheck::class.':admin'])->group(functi
 });
 
 Route::middleware(['auth', RoleCheck::class.':admin,user'])->group(function () {
-    //
+    Route::prefix('layanan')->group(function () {
+        Route::prefix('pengajuan-sertifikat-halal')->group(function () {
+            Route::get('/', [ServiceController::class, 'halalCertification'])->name('service.halalcertification');
+            Route::get('/daftar', [ServiceController::class, 'halalCertificationRegister'])->name('service.halalcertification.register');
+            Route::post('/daftar/store', [ServiceController::class, 'halalCertificationRegisterStore'])->name('service.halalcertification.register.store');
+
+            Route::get('/penanggung-jawab-penyelia/{pengajuanId}/create', [PenanggungJawabPenyeliaController::class, 'create'])->name('penanggung_jawab_penyelia.create');
+            Route::post('/penanggung-jawab-penyelia/{pengajuanId}/store', [PenanggungJawabPenyeliaController::class, 'store'])->name('penanggung_jawab_penyelia.store');
+            Route::get('/penanggung-jawab-penyelia/{id}/edit', [PenanggungJawabPenyeliaController::class, 'edit'])->name('penanggung_jawab_penyelia.edit');
+            Route::patch('/penanggung-jawab-penyelia/{id}/update', [PenanggungJawabPenyeliaController::class, 'update'])->name('penanggung_jawab_penyelia.update');
+
+            Route::get('/bahan/{pengajuanId}/create', [BahanController::class, 'create'])->name('bahan.create');
+            Route::post('/bahan/{pengajuanId}/store', [BahanController::class, 'store'])->name('bahan.store');
+            Route::get('/bahan/{id}/edit', [BahanController::class, 'edit'])->name('bahan.edit');
+            Route::patch('/bahan/{id}/update', [BahanController::class, 'update'])->name('bahan.update');
+        });
+
+        Route::prefix('pelatihan-pendamping-halal')->group(function () {
+            Route::get('/', [ServiceController::class, 'halalCompanion'])->name('service.halalcompanion');
+        });
+
+        Route::prefix('juru-sembelih-halal')->group(function () {
+            Route::get('/', [ServiceController::class, 'slaughterer'])->name('service.slaughterer');
+        });
+    });
 });
 
 require __DIR__.'/auth.php';
